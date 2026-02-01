@@ -17,20 +17,14 @@ public class Carta {
         this.target = targets.values()[(int) (Math.random() * targets.values().length)].toString();
         generanome();
     }
-    
-    private void generanome() {
-        String[] prefissi = {"Drago", "Lupo", "Tigre", "Serpente", "Aquila", "Golem", "Spirito", "Ombra", "Fuoco", "Ghiaccio", "Tuono", "Terra", "Vento", "Luce", "Oscuro"};
-        String[] suffissi = {"Antico", "Furioso", "Mistico", "Selvaggio", "Celeste", "Infernale", "Glaciale", "Tonante", "Sacro", "Maledetto", "Supremo", "Eterno", "Fatale", "Divino", "Spettrale"};
-        this.nome = prefissi[(int) (Math.random() * prefissi.length)] + " " + suffissi[(int) (Math.random() * suffissi.length)];
-    }
 
-    public enum targets {
-        ATK_FORTE,
-        ATK_DEBOLE,
-        DEF_FORTE,
-        DEF_DEBOLE,
-        HP_ALTO,
-        HP_BASSO;
+    private void generanome() {
+        String[] prefissi = { "Drago", "Lupo", "Tigre", "Serpente", "Aquila", "Golem", "Spirito", "Ombra", "Fuoco",
+                "Ghiaccio", "Tuono", "Terra", "Vento", "Luce", "Oscuro" };
+        String[] suffissi = { "Antico", "Furioso", "Mistico", "Selvaggio", "Celeste", "Infernale", "Glaciale",
+                "Tonante", "Sacro", "Maledetto", "Supremo", "Eterno", "Fatale", "Divino", "Spettrale" };
+        this.nome = prefissi[(int) (Math.random() * prefissi.length)] + " "
+                + suffissi[(int) (Math.random() * suffissi.length)];
     }
 
     public int getSomma() {
@@ -52,5 +46,29 @@ public class Carta {
     public static void main(String[] args) {
         Carta carta = new Carta();
         System.out.println(carta.toString());
+    }
+
+    public String getNome() {
+        return nome;
+    }
+
+    public int getHp() {
+        return hp;
+    }
+
+    public int getAtk() {
+        return atk;
+    }
+
+    public int getDef() {
+        return def;
+    }
+
+    public String getTarget() {
+        return target;
+    }
+
+    public int setHp(int hp) {
+        return this.hp = hp;
     }
 }
