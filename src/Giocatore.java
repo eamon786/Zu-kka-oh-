@@ -15,6 +15,9 @@ public class Giocatore {
 
     }
 
+    void pesca() {
+    }
+
     private void generaMazzo(Carta[] mazzo) {
         for (int i = 0; i < mazzo.length; i++) {
             Carta carta = new Carta();
@@ -25,20 +28,26 @@ public class Giocatore {
     private static void selectionSort(Carta[] array) {
         for (int i = 0; i < array.length - 1; i++) {
 
-        int min = -1;
-        for (int k = i; k < array.length; k++) {
-            if (array[k] != null) { min = k; break; }
-        }
-        if (min == -1) return;
+            int min = -1;
+            for (int k = i; k < array.length; k++) {
+                if (array[k] != null) {
+                    min = k;
+                    break;
+                }
+            }
+            if (min == -1)
+                return;
 
-        for (int j = min + 1; j < array.length; j++) {
-            if (array[j] == null) continue;
-            if (array[j].getSomma() < array[min].getSomma()) min = j;
-        }
+            for (int j = min + 1; j < array.length; j++) {
+                if (array[j] == null)
+                    continue;
+                if (array[j].getSomma() < array[min].getSomma())
+                    min = j;
+            }
 
-        Carta tmp = array[min];
-        array[min] = array[i];
-        array[i] = tmp;
+            Carta tmp = array[min];
+            array[min] = array[i];
+            array[i] = tmp;
         }
     }
 
@@ -79,7 +88,8 @@ public class Giocatore {
             Carta bersaglio = avversario.cartaInGioco[indiceBersaglio];
             int danno = Math.max(attaccante.getAtk() - bersaglio.getDef(), 1);
             bersaglio.setHp(danno);
-            System.out.println(attaccante.getNome() + " attacca " + bersaglio.getNome() + " infliggendo " + danno + " danni.");
+            System.out.println(
+                    attaccante.getNome() + " attacca " + bersaglio.getNome() + " infliggendo " + danno + " danni.");
 
             if (bersaglio.getHp() <= 0) {
                 avversario.cartaInGioco[indiceBersaglio] = null;
