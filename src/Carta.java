@@ -5,14 +5,14 @@ public class Carta {
     public int atk;
     public int def;
     public String target;
-    public int somma;
 
     public Carta() {
+        int somma;
         do {
-            this.hp = (int) (Math.random() * 50);
-            this.atk = (int) (Math.random() * 50);
-            this.def = (int) (Math.random() * 50);
-            this.somma = hp + atk + def;
+            this.hp = (int) (Math.random() * 51);
+            this.atk = (int) (Math.random() * 51);
+            this.def = (int) (Math.random() * 51);
+            somma = hp + atk + def;
         } while (somma > 100);
         this.target = targets.values()[(int) (Math.random() * targets.values().length)].toString();
         generanome();
@@ -27,9 +27,10 @@ public class Carta {
                 + suffissi[(int) (Math.random() * suffissi.length)];
     }
 
-    public int getSomma() {
-        return somma;
-    }
+        public int getPuntiTotali() {
+            return hp + atk + def;
+        }
+
 
     @Override
     public String toString() {
@@ -39,7 +40,7 @@ public class Carta {
                 ",\n atk: " + atk +
                 ",\n def: " + def +
                 ",\n target: " + target +
-                ",\n Punti Totali: " + getSomma() +
+                ",\n Punti Totali: " + getPuntiTotali() +
                 "\n}";
     }
 

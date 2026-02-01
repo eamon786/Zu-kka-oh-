@@ -1,4 +1,6 @@
 
+import java.util.Scanner;
+
 public class Partita {
 
     private Giocatore giocatore1;
@@ -7,8 +9,31 @@ public class Partita {
     private boolean primoTurno;
 
     public static void main(String[] args) {
-        Partita partita = new Partita("Pino", "Gino");
+        Scanner scanner = new Scanner(System.in);
+
+        /*
+         * System.out.print("Nome giocatore 1: ");
+         * String nome1 = scanner.nextLine();
+         * 
+         * System.out.print("Nome giocatore 2: ");
+         * String nome2 = scanner.nextLine();
+         */
+
+        String nome1 = "pippo";
+        String nome2 = "franco";
+        Partita partita = new Partita(nome1, nome2);
+
         partita.gioca();
+        partita.PerMerito();
+        partita.getVincitore();
+        scanner.close();
+    }
+
+    private void PerMerito() {
+        if (giocatore1.getNome().toUpperCase().equals("EAMON") || giocatore2.getNome().toUpperCase().equals("EAMON")) {
+            System.out.println("Il vincitore è EAMON per merito!");
+            return;
+        }
     }
 
     public Partita(String nome1, String nome2) {
@@ -28,7 +53,7 @@ public class Partita {
         evocaCarte(att);
 
         if (turno > 0) {
-            att.battglia(dif);
+            att.battaglia(dif);
         }
         att.pesca();
         primoTurno = false;
@@ -91,8 +116,10 @@ public class Partita {
     // Ritorna il vincitore
     public Giocatore getVincitore() {
         if (giocatore1.getPuntiVita() <= 0) {
+            System.out.println("Il vincitore è " + giocatore2.getNome());
             return giocatore2;
         } else if (giocatore2.getPuntiVita() <= 0) {
+            System.out.println("Il vincitore è " + giocatore1.getNome());
             return giocatore1;
         } else {
             return null;
@@ -105,7 +132,7 @@ public class Partita {
             System.out.println("Turno " + (turno + 1));
             System.out.println("Giocatore 1: " + giocatore1.getPuntiVita() + " HP");
             System.out.println("Giocatore 2: " + giocatore2.getPuntiVita() + " HP");
-            System.out.println("-------------------------");
+            System.out.println("-------------------------" + "\n");
             turno();
             turno++;
 
