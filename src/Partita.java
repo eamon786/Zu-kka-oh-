@@ -12,7 +12,7 @@ public class Partita {
         Scanner scanner = new Scanner(System.in);
 
         /*
-         * System.out.print("Nome giocatore 1: ");
+         //* System.out.print("Nome giocatore 1: ");
          * String nome1 = scanner.nextLine();
          * 
          * System.out.print("Nome giocatore 2: ");
